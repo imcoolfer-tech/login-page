@@ -24,3 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
     container.classList.remove('right-panel-active');
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('loginForm');
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Biar gak reload halaman
+
+      // Setelah klik login → pindah ke halaman utama (repo lain)
+      window.location.href = "https://username.github.io/main-page/";
+    });
+  }
+});
