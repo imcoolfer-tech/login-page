@@ -26,13 +26,41 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
 
+  // === LOGIN ===
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
-      e.preventDefault(); // Biar gak reload halaman
+      e.preventDefault();
 
-      // Setelah klik login → pindah ke halaman utama (repo lain)
-      window.location.href = "https://imcoolfer-tech.github.io/main-pages";
+      const email = loginForm.querySelector('input[type="email"]').value;
+      const password = loginForm.querySelector('input[type="password"]').value;
+      const savedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (savedUser && savedUser.email === email && savedUser.password === password) {
+        // kalau cocok, redirect ke main page
+        window.location.href = "https://imcoolfer-tech.github.io/main-pages";
+      } else {
+        alert("Email atau password salah!");
+      }
+    });
+  }
+
+  // === REGISTER ===
+  if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = registerForm.querySelector('input[type="email"]').value;
+      const password = registerForm.querySelector('input[type="password"]').value;
+
+      // Simpan data user ke localStorage
+      localStorage.setItem("user", JSON.stringify({ email, password }));
+
+      alert("Akun berhasil dibuat! Silakan login sekarang.");
+      // Pindah ke panel login
+      document.getElementById('container').classList.remove('right-panel-active');
     });
   }
 });
+
