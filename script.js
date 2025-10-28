@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault(); // Biar gak reload halaman
 
       // Setelah klik login → pindah ke halaman utama (repo lain)
-      window.location.href = "https://username.github.io/main-page/";
+      window.location.href = "https://imcoolfer-tech.github.io/main-pages";
     });
   }
 });
